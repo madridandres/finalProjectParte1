@@ -25,27 +25,53 @@ const Home = () => {
         <div>
             <Row>
                 <Col lg={3}>
-                    <Accordion defaultActiveKey={['0']} alwaysOpen>
+                    <Accordion defaultActiveKey={['1']} alwaysOpen className='acordeon'>
+                        <h4>Filter</h4>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>Accordion Price</Accordion.Header>
+                            <Accordion.Header>Price</Accordion.Header>
                             <Accordion.Body>
-                                Lorem ipsum 
+                                <InputGroup className="mb-3">
+                                    <div>
+                                        <div>
+                                            <label htmlFor="">From</label>
+                                            <Form.Control
+                                                aria-label="Recipient's username"
+                                                aria-describedby="basic-addon2"
+                                                type='number'
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="">To</label>
+                                            <Form.Control
+                                                aria-label="Recipient's username"
+                                                aria-describedby="basic-addon2"
+                                                type='number'
+                                            />
+                                        </div>
+                                    </div>
+                                    <Button
+                                        variant="outline-secondary"
+                                        className='button-home button-price'
+                                    >
+                                        Filter Price
+                                    </Button>
+                                </InputGroup>
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header>Accordion Category</Accordion.Header>
+                            <Accordion.Header>Category</Accordion.Header>
                             <Accordion.Body>
-                                <ListGroup>
-                                    <ul className='category-filter'>
-                                        {categoriesList.map(category => (
-                                            <ListGroup.Item onClick={() => dispatch(filterProductsThunk(category.id))} key={category.id}>
-                                                <li>
-                                                    {category.name}
-                                                </li>
-                                            </ListGroup.Item>
-                                        ))}
-                                    </ul>
-                                </ListGroup>
+                                <ul className='category-filter'>
+                                    {categoriesList.map(category => (
+                                        <li onClick={() => {
+                                            dispatch(filterProductsThunk(category.id),
+                                                setInputSearch(""))
+                                        }
+                                        } key={category.id}>
+                                            <button>{category.name}</button>
+                                        </li>
+                                    ))}
+                                </ul>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
@@ -60,6 +86,7 @@ const Home = () => {
                             onChange={e => setInputSearch(e.target.value)}
                         />
                         <Button
+                            className='button-home'
                             variant="outline-secondary"
                             onClick={() => dispatch(filterNameThunk(inputSearch))}
                         >
@@ -79,12 +106,26 @@ const Home = () => {
                                         />
                                         <Card.Body>
                                             <Card.Title>{product.title}</Card.Title>
-                                            <Card.Text className='text-muted'>
-                                                Price
-                                            </Card.Text>
-                                            <Card.Text>
-                                                {product.price}
-                                            </Card.Text>
+                                            <div className='info-card-buy'>
+                                                <div>
+                                                    <Card.Text className='text-muted'>
+                                                        Price
+                                                    </Card.Text>
+                                                    <Card.Text>
+                                                        {product.price}
+                                                    </Card.Text>
+                                                </div>
+                                                <div>
+                                                    <Button
+                                                        variant="outline-secondary"
+                                                        className='button-home button-buy'
+
+                                                    >
+                                                        <i className="fa-solid fa-cart-shopping"></i>
+                                                    </Button>
+                                                </div>
+                                            </div>
+
                                         </Card.Body>
                                     </Link>
                                 </Card>

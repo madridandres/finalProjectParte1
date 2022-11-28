@@ -26,21 +26,21 @@ const ProductsDetail = () => {
                     <Carousel variant="dark">
                         <Carousel.Item>
                             <img
-                                className="d-block w-100"
+                                className="d-block w-100 img-detail"
                                 src={product?.productImgs[0]}
                                 alt="First slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
-                                className="d-block w-100"
+                                className="d-block w-100 img-detail"
                                 src={product?.productImgs[1]}
                                 alt="Second slide"
                             />
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
-                                className="d-block w-100"
+                                className="d-block w-100 img-detail"
                                 src={product?.productImgs[2]}
                                 alt="Third slide"
                             />
@@ -80,14 +80,28 @@ const ProductsDetail = () => {
 
                                 />
                                 <Card.Body>
-                                    <Card.Title>{productItem.title}</Card.Title>
-                                    <Card.Text className='text-muted'>
-                                        Price
-                                    </Card.Text>
-                                    <Card.Text>
-                                        {productItem.price}
-                                    </Card.Text>
-                                </Card.Body>
+                                            <Card.Title>{productItem.title}</Card.Title>
+                                            <div className='info-card-buy'>
+                                                <div>
+                                                    <Card.Text className='text-muted'>
+                                                        Price
+                                                    </Card.Text>
+                                                    <Card.Text>
+                                                        {productItem.price}
+                                                    </Card.Text>
+                                                </div>
+                                                <div>
+                                                    <Button
+                                                        variant="outline-secondary"
+                                                        className='button-home button-buy'
+
+                                                    >
+                                                        <i class="fa-solid fa-cart-shopping"></i>
+                                                    </Button>
+                                                </div>
+                                            </div>
+
+                                        </Card.Body>
                             </Link>
                         </Card>
                     </Col>

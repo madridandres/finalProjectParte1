@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = () => {
     return (
-        <div>
+        <div className='temporary-page-size'>
             <h1>Login</h1>
         </div>
     );

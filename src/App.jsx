@@ -2,6 +2,7 @@ import { Container } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
+import Footer from './components/Footer'
 import LoadingScreen from './components/LoadingScreen'
 import NavBar from './components/NavBar'
 import Home from './pages/Home'
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </Container>
+      <Footer />
     </HashRouter>
   )
 }
