@@ -246,6 +246,7 @@
     justify-content: center;
     bottom: 0 !important;
     left: 0 !important;
+    height: 250px;
 }
 
 .button-footer{
@@ -265,7 +266,8 @@
 }
 
 .temporary-page-size{
-    height: 53vh;
+    height: 100vh;
+    
 }
 
 @media screen and (max-width: 992px){
