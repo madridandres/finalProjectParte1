@@ -266,8 +266,7 @@
 }
 
 .temporary-page-size{
-    height: 100vh;
-    
+    height: 120vh;
 }
 
 @media screen and (max-width: 992px){
