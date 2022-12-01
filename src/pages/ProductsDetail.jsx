@@ -61,7 +61,7 @@ const ProductsDetail = () => {
                 <Col lg={6}>
                     <h1>{product?.title}</h1>
                     <h5>{product?.description}</h5>
-                    <div>
+                    <div className='price_and_quantity'>
                         <div>
                             <h6 className='text-muted'>Price</h6>
                             <h5>{product?.price}</h5>
@@ -107,7 +107,7 @@ const ProductsDetail = () => {
                                                 className='button-home button-buy'
 
                                             >
-                                                <i class="fa-solid fa-cart-shopping"></i>
+                                                <i className="fa-solid fa-cart-shopping"></i>
                                             </Button>
                                         </div>
                                     </div>

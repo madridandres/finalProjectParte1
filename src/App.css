@@ -273,7 +273,7 @@
 }
 
 .card-shop h6{
-    width: 20rem;
+    width: 25rem;
 }
 
 .card-info-price{
@@ -301,6 +301,7 @@
     max-height: 100px !important;
     padding: revert !important;
     padding-bottom: 10px !important;
+    background-color: #f85555 !important;
 }
 
 .input-quantity{
@@ -309,6 +310,39 @@
     border: 1px solid rgb(191, 191, 191);
 }
 
+.price_and_quantity{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10rem;
+}
+
+.list-cart{
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.info-list-cart{
+}
+
+.subtitle-cart{
+    color: rgb(191, 191, 191);
+}
+
+.quantity-cart{
+    padding-top: 5px;
+    text-align: center;
+    font-size: 15px;
+    max-width: 50px;
+    height: 30px;
+    border: 1px solid rgb(191, 191, 191);
+    border-radius: 5px;
+}
+
+.info-price-cart{
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
 
 @media screen and (max-width: 992px){
     .me-auto{

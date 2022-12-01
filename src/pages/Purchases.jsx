@@ -18,7 +18,7 @@ const Purchases = () => {
             {
                 purchases.map(purchase => (
                     <>
-                        <Card >
+                        <Card style={{marginBottom: 35}} key={purchase.id}>
                             <ListGroup >
                                 <Card.Header>
                                     {purchase.createdAt}
@@ -26,9 +26,9 @@ const Purchases = () => {
                                 <ListGroup.Item className='card-complete-info'>
                                     <div>
                                         {purchase.cart.products.map(product => (
-                                            <Link to={`/products/${product.id}`} style={{ textDecoration: "none" }}>
+                                            <Link to={`/products/${product.id}`} style={{ textDecoration: "none" }} key={product.id}>
                                                 <div className='card-shop'>
-                                                    <h6 key={product.title}>
+                                                    <h6 >
                                                         {product.title}
                                                     </h6>
                                                     <div className='card-info-price'>
