@@ -12,6 +12,9 @@ const Cart = ({ show, handleClose }) => {
     dispatch(getCartThunk())
   }, [])
 
+
+
+
   return (
     <Offcanvas show={show} onHide={handleClose}>
       <Offcanvas.Header closeButton>
@@ -23,7 +26,7 @@ const Cart = ({ show, handleClose }) => {
             cart.map(product => (
               <div key={product.title}>
                 <li className='list-cart'>
-                  <div className='info-list-cart'>
+                  <div>
                     <h6 className='subtitle-cart'>
                     {product.brand}
                     </h6>
@@ -34,7 +37,7 @@ const Cart = ({ show, handleClose }) => {
                     {product.productsInCart.quantity}
                     </h6>
                   </div>
-                  <div className='info-price-cart info-price-cart'>
+                  <div className='info-price-cart'>
                     <h6 className='subtitle-cart'>Total:</h6>
                     <h6>${product.price * product.productsInCart.quantity}</h6>
                   </div>
@@ -44,7 +47,13 @@ const Cart = ({ show, handleClose }) => {
           }
         </ul>
       </Offcanvas.Body>
+      <div className='total-price-cart'>
+        <div className='info-price-cart'>
+                    <h6 className='subtitle-cart'>Total:</h6>
+                    <h6>$</h6>
+                  </div>
       <Button onClick={() => dispatch(checkoutCartThunk())} style={{ backgroundColor: "#f85555" }}>Checkout</Button>
+      </div>
     </Offcanvas>
   );
 };
