@@ -21,18 +21,6 @@ const Home = () => {
             .then(res => setCategoriesList(res.data.data.categories))
     }, [])
 
-    const { id } = useParams()
-
-    const productsList = useSelector(state => state.products)
-    const product = productsList.find(productItem => productItem.id === Number(id))
-
-    const addProductsHome = () => {
-        const products = {
-            id: product.id,
-            quantity: "1"
-        }
-        dispatch(createProductThunk(products))
-    }
 
     console.log(products)
     return (
@@ -41,37 +29,7 @@ const Home = () => {
                 <Col lg={3}>
                     <Accordion defaultActiveKey={['1']} alwaysOpen className='acordeon'>
                         <h4>Filter</h4>
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header>Price</Accordion.Header>
-                            <Accordion.Body>
-                                <InputGroup className="mb-3">
-                                    <div>
-                                        <div>
-                                            <label htmlFor="">From</label>
-                                            <Form.Control
-                                                aria-label="Recipient's username"
-                                                aria-describedby="basic-addon2"
-                                                type='number'
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="">To</label>
-                                            <Form.Control
-                                                aria-label="Recipient's username"
-                                                aria-describedby="basic-addon2"
-                                                type='number'
-                                            />
-                                        </div>
-                                    </div>
-                                    <Button
-                                        variant="outline-secondary"
-                                        className='button-home button-price'
-                                    >
-                                        Filter Price
-                                    </Button>
-                                </InputGroup>
-                            </Accordion.Body>
-                        </Accordion.Item>
+                        
                         <Accordion.Item eventKey="1">
                             <Accordion.Header>Category</Accordion.Header>
                             <Accordion.Body>
@@ -118,6 +76,7 @@ const Home = () => {
                                             style={{ height: 200, objectFit: "contain" }}
 
                                         />
+
                                         <Card.Body>
                                             <Card.Title>{product.title}</Card.Title>
                                             <div className='info-card-buy'>
@@ -133,7 +92,7 @@ const Home = () => {
                                                     <Button
                                                         variant="outline-secondary"
                                                         className='button-home button-buy'
-                                                        onClick={addProductsHome}
+
                                                     >
                                                         <i className="fa-solid fa-cart-shopping"></i>
                                                     </Button>

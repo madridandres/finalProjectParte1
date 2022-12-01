@@ -228,10 +228,9 @@
 }
 
 .img-detail{
-    max-height: 400px;
-    max-width: 400px;
-    min-width: 400px;
-    min-height: 400px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    padding: 40px;
 }
 
 .col-lg-6{
@@ -265,9 +264,51 @@
     justify-content: center;
 }
 
-.temporary-page-size{
-    height: 120vh;
+
+.card-shop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
 }
+
+.card-shop h6{
+    width: 20rem;
+}
+
+.card-info-price{
+    display: flex;
+    gap: 4rem;
+    
+}
+
+.card-info-price > h6{
+    width: 5rem;
+}
+
+.list-group-item{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.card-header{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.button-add-to-cart{
+    margin-top: 15px;
+    max-height: 100px !important;
+    padding: revert !important;
+    padding-bottom: 10px !important;
+}
+
+.input-quantity{
+    max-width: 60px;
+    text-align: center;
+    border: 1px solid rgb(191, 191, 191);
+}
+
 
 @media screen and (max-width: 992px){
     .me-auto{

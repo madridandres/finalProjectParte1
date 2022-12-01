@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     return (
-        <div className='temporary-page-size'>
+        <div style={{maxWidth: 450, margin: "0 auto"}}>
             <h1>Login</h1>
             <Form onSubmit={handleSubmit(submit)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

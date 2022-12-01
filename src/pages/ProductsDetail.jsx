@@ -20,7 +20,7 @@ const ProductsDetail = () => {
     const product = productsList.find(productItem => productItem.id === Number(id))
     const relatedProducts = productsList.filter(productItem => productItem.category.id === product.category.id && productItem.id !== product.id)
 
-    const [quantitys, setQuantitys] = useState("")
+    const [quantitys, setQuantitys] = useState(1)
     const addProducts = () => {
         const products = {
             id: product.id,
@@ -68,11 +68,11 @@ const ProductsDetail = () => {
                         </div>
                         <div>
                             <h6 className='text-muted'>Quantity</h6>
-                            <input type="text" value={quantitys} onChange={(e) => setQuantitys(e.target.value)} />
+                            <input className='input-quantity' type="number" value={quantitys} onChange={(e) => setQuantitys(e.target.value)} />
                         </div>
                     </div>
                     <div className="d-grid gap-2">
-                        <Button onClick={addProducts} variant="primary" size="lg">
+                        <Button onClick={addProducts} variant="primary" size="lg" className='button-add-to-cart'>
                             Add to cart <i className="fa-solid fa-cart-shopping"></i>
                         </Button>
                     </div>

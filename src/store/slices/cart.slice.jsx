@@ -24,6 +24,7 @@ export const createProductThunk = (products) => (dispatch) => {
     dispatch(setIsLoading(true));
     return axios.post("https://e-commerce-api.academlo.tech/api/v1/cart", products, getConfig())
         .then((res) => dispatch(getCartThunk()))
+        .catch(error => error.response?.data)
         .finally(() => dispatch(setIsLoading(false)));
 }
 
