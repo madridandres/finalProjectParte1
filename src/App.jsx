@@ -5,6 +5,7 @@ import './App.css'
 import Footer from './components/Footer'
 import LoadingScreen from './components/LoadingScreen'
 import NavBar from './components/NavBar'
+import ProtectedRoutes from './components/ProtectedRoutes'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import ProductsDetail from './pages/ProductsDetail'
@@ -22,8 +23,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products/:id" element={<ProductsDetail />} />
-          <Route path="/purchases" element={<Purchases />} />
           <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/purchases" element={<Purchases />} />
+          </Route>
         </Routes>
       </Container>
       <Footer />

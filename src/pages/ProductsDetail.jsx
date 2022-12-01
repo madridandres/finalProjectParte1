@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Carousel, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import { createProductThunk } from '../store/slices/cart.slice';
 import { getProductsThunk } from '../store/slices/products.slice';
 
 const ProductsDetail = () => {
@@ -10,6 +11,7 @@ const ProductsDetail = () => {
 
     const dispatch = useDispatch()
 
+
     useEffect(() => {
         dispatch(getProductsThunk())
     }, [])
@@ -17,6 +19,15 @@ const ProductsDetail = () => {
     const productsList = useSelector(state => state.products)
     const product = productsList.find(productItem => productItem.id === Number(id))
     const relatedProducts = productsList.filter(productItem => productItem.category.id === product.category.id && productItem.id !== product.id)
+
+    const [quantitys, setQuantitys] = useState("")
+    const addProducts = () => {
+        const products = {
+            id: product.id,
+            quantity: quantitys
+        }
+        dispatch(createProductThunk(products))
+    }
 
 
     return (
@@ -57,11 +68,11 @@ const ProductsDetail = () => {
                         </div>
                         <div>
                             <h6 className='text-muted'>Quantity</h6>
-                            <h5>"Poner contador"</h5>
+                            <input type="text" value={quantitys} onChange={(e) => setQuantitys(e.target.value)} />
                         </div>
                     </div>
                     <div className="d-grid gap-2">
-                        <Button variant="primary" size="lg">
+                        <Button onClick={addProducts} variant="primary" size="lg">
                             Add to cart <i className="fa-solid fa-cart-shopping"></i>
                         </Button>
                     </div>
@@ -80,28 +91,28 @@ const ProductsDetail = () => {
 
                                 />
                                 <Card.Body>
-                                            <Card.Title>{productItem.title}</Card.Title>
-                                            <div className='info-card-buy'>
-                                                <div>
-                                                    <Card.Text className='text-muted'>
-                                                        Price
-                                                    </Card.Text>
-                                                    <Card.Text>
-                                                        {productItem.price}
-                                                    </Card.Text>
-                                                </div>
-                                                <div>
-                                                    <Button
-                                                        variant="outline-secondary"
-                                                        className='button-home button-buy'
+                                    <Card.Title>{productItem.title}</Card.Title>
+                                    <div className='info-card-buy'>
+                                        <div>
+                                            <Card.Text className='text-muted'>
+                                                Price
+                                            </Card.Text>
+                                            <Card.Text>
+                                                {productItem.price}
+                                            </Card.Text>
+                                        </div>
+                                        <div>
+                                            <Button
+                                                variant="outline-secondary"
+                                                className='button-home button-buy'
 
-                                                    >
-                                                        <i class="fa-solid fa-cart-shopping"></i>
-                                                    </Button>
-                                                </div>
-                                            </div>
+                                            >
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </Button>
+                                        </div>
+                                    </div>
 
-                                        </Card.Body>
+                                </Card.Body>
                             </Link>
                         </Card>
                     </Col>

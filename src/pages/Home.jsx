@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Accordion, Button, Card, Col, Form, InputGroup, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { createProductThunk } from '../store/slices/cart.slice';
 import { filterProductsThunk, getProductsThunk, filterNameThunk } from '../store/slices/products.slice';
 
 const Home = () => {
@@ -19,6 +20,19 @@ const Home = () => {
         axios.get('https://e-commerce-api.academlo.tech/api/v1/products/categories')
             .then(res => setCategoriesList(res.data.data.categories))
     }, [])
+
+    const { id } = useParams()
+
+    const productsList = useSelector(state => state.products)
+    const product = productsList.find(productItem => productItem.id === Number(id))
+
+    const addProductsHome = () => {
+        const products = {
+            id: product.id,
+            quantity: "1"
+        }
+        dispatch(createProductThunk(products))
+    }
 
     console.log(products)
     return (
@@ -119,7 +133,7 @@ const Home = () => {
                                                     <Button
                                                         variant="outline-secondary"
                                                         className='button-home button-buy'
-
+                                                        onClick={addProductsHome}
                                                     >
                                                         <i className="fa-solid fa-cart-shopping"></i>
                                                     </Button>
