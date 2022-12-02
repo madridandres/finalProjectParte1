@@ -12,8 +12,16 @@ const Cart = ({ show, handleClose }) => {
     dispatch(getCartThunk())
   }, [])
 
+  let pricesProducts = []
 
+  cart.map(itemPrice => (
+    pricesProducts.push((itemPrice.price * itemPrice.productsInCart.quantity))
+  ))
 
+  let totalCart = 0;
+  for (let n of pricesProducts) {
+    totalCart += n;
+  }
 
   return (
     <Offcanvas show={show} onHide={handleClose}>
@@ -28,18 +36,18 @@ const Cart = ({ show, handleClose }) => {
                 <li className='list-cart'>
                   <div>
                     <h6 className='subtitle-cart'>
-                    {product.brand}
+                      {product.brand}
                     </h6>
                     <h6>
-                    {product.title}
+                      {product.title}
                     </h6>
                     <h6 className='quantity-cart'>
-                    {product.productsInCart.quantity}
+                      {product.productsInCart.quantity}
                     </h6>
                   </div>
                   <div className='info-price-cart'>
                     <h6 className='subtitle-cart'>Total:</h6>
-                    <h6>${product.price * product.productsInCart.quantity}</h6>
+                    <h6>${(product.price * product.productsInCart.quantity).toFixed(2)}</h6>
                   </div>
                 </li>
               </div>
@@ -49,10 +57,10 @@ const Cart = ({ show, handleClose }) => {
       </Offcanvas.Body>
       <div className='total-price-cart'>
         <div className='info-price-cart'>
-                    <h6 className='subtitle-cart'>Total:</h6>
-                    <h6>$</h6>
-                  </div>
-      <Button onClick={() => dispatch(checkoutCartThunk())} style={{ backgroundColor: "#f85555" }}>Checkout</Button>
+          <h6 className='subtitle-cart'>Total:</h6>
+          <h6>${totalCart.toFixed(2)}</h6>
+        </div>
+        <Button onClick={() => dispatch(checkoutCartThunk())} style={{ backgroundColor: "#f85555" }}>Checkout</Button>
       </div>
     </Offcanvas>
   );

@@ -21,8 +21,6 @@ const Home = () => {
             .then(res => setCategoriesList(res.data.data.categories))
     }, [])
 
-
-    console.log(products)
     return (
         <div>
             <Row>

@@ -12,6 +12,13 @@ const Purchases = () => {
     useEffect(() => {
         dispatch(getPurchasesThunk())
     }, [])
+
+    const getFormatedDate = (dateString) => {
+        const date = new Date(dateString);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' }
+        return date.toLocaleDateString(undefined, options);
+    }
+
     return (
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <h1>My Purchases</h1>
@@ -21,7 +28,7 @@ const Purchases = () => {
                         <Card style={{marginBottom: 35}} key={purchase.id}>
                             <ListGroup >
                                 <Card.Header>
-                                    {purchase.createdAt}
+                                    {getFormatedDate(purchase.createdAt)}
                                 </Card.Header>
                                 <ListGroup.Item className='card-complete-info'>
                                     <div>
